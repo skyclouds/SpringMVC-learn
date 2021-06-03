@@ -17,11 +17,11 @@
     </properties>
 
     <modules>
-
         <module>servlet</module>
         <module>hello</module>
         <module>annotation</module>
         <module>controller</module>
+        <module>json</module>
     </modules>
 
     <dependencies>

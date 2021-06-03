@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:mvc="http://www.springframework.org/schema/mvc" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.example.controller"/>
+    
+    <!-- JSON乱码-->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+                        <property name="failOnEmptyBeans" value="false"/>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 视图解析器:DispatcherServlet给他的ModelAndView
+    1.获取了ModelAndView的数据
+    2.解析了ModelAndView的视图名字
+    3.拼接视图的名字,找到对应的视图 /WEB-INF/jsp/hello.jsp
+    4.将数据渲染到视图上
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="InternalResourceViewResolver">
+        <!-- 前缀-->
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <!-- 后缀-->
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+</beans>
