@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:mvc="http://www.springframework.org/schema/mvc" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 自动扫描包,让指定包下的注解生效,🈶️IOC容器统一管理-->   
+    <context:component-scan base-package="com.example.controller"/>
+    <!-- 让Spring MVC 不处理静态资源 .css .js .html .mp3 .mp4-->
+    <mvc:default-servlet-handler />
+    <!-- 支持MVC注解驱动
+        在Spring中一般采用@RequestMapping注解来完成映射关系
+        要想使@RequestMapping注解生效
+        必须向上下文中注册@DefaultAnnotationHandlerMapping
+        和一个@AnnotationHandlerAdapter实例
+        这两个实例分别在类级别和方法级别处理
+        而annotation-driven配置自动帮助我们完成上述两个实例的注入
+    -->
+    <mvc:annotation-driven/>
+    <!-- 视图解析器:DispatcherServlet给他的ModelAndView
+    1.获取了ModelAndView的数据
+    2.解析了ModelAndView的视图名字
+    3.拼接视图的名字,找到对应的视图 /WEB-INF/jsp/hello.jsp
+    4.将数据渲染到视图上
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="InternalResourceViewResolver">
+        <!-- 前缀-->
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <!-- 后缀-->
+        <property name="suffix" value=".jsp" />
+    </bean>
+</beans>
