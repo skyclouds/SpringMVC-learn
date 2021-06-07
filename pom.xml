@@ -22,9 +22,13 @@
         <module>annotation</module>
         <module>controller</module>
         <module>json</module>
+        <module>mybatis</module>
+        <module>ajax</module>
+        <module>interceptor</module>
     </modules>
 
     <dependencies>
+        <!-- junit-->
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
@@ -32,12 +36,14 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!-- spring-->
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>5.1.9.RELEASE</version>
         </dependency>
+        <!-- servlet jsp-->
         <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -56,6 +62,7 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+        <!-- lombok-->
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
