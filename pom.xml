@@ -25,6 +25,7 @@
         <module>mybatis</module>
         <module>ajax</module>
         <module>interceptor</module>
+        <module>file</module>
     </modules>
 
     <dependencies>
